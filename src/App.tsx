@@ -24,6 +24,10 @@ export const App = () => {
       })
       setTasks(filteredTasks)
    }
+   const changeFilter = (filter: FilterValues) => {
+      setFilter(filter)
+   }
+
    let filteredTasks = tasks
    if (filter === 'active') {
       filteredTasks = tasks.filter(task => !task.isDone)
@@ -37,6 +41,7 @@ export const App = () => {
          <TodolistItem title="What to learn"
                        tasks={filteredTasks}
                        deleteTask={deleteTask}
+                       changeFilter={changeFilter}
          />
       </div>
    )
