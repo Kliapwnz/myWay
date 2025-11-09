@@ -1,4 +1,5 @@
 import {Task} from "./App";
+import {Button} from "./Button";
 
 type Props = {
    title: string
@@ -11,7 +12,7 @@ export const TodolistItem = ({title, tasks}: Props) => {
          <h3>{title}</h3>
          <div>
             <input/>
-            <button>+</button>
+            <Button title="+"></Button>
          </div>
          {tasks.length === 0 ? (<p>Тасок нет</p>) : (
             <ul>
@@ -25,9 +26,10 @@ export const TodolistItem = ({title, tasks}: Props) => {
             </ul>
          )}
          <div>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <Button title={"All"}/>
+            <Button title={"Active"}/>
+            <Button title={"Completed"}/>
+
          </div>
 
       </div>
