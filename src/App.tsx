@@ -4,7 +4,8 @@ import {TodolistItem} from "./TodolistItem";
 export const App= () => {
   return (
       <div className="app">
-        <TodolistItem/>
+        <TodolistItem title="What to learn"/>
+        <TodolistItem title="Man City"/>
       </div>
   )
 }
