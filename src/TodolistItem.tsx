@@ -6,6 +6,7 @@ type Props = {
    tasks: Task[]
    deleteTask: (taskId: number) => void
    changeFilter: (filter: FilterValues) => void
+   createTask: () => void
 }
 
 export const TodolistItem = ({title, tasks, deleteTask, changeFilter}: Props) => {
