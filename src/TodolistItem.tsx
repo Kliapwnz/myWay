@@ -2,8 +2,7 @@ type Props = {
    title: string
 }
 
-export const TodolistItem = (props: Props) => {
-   const {title} = props
+export const TodolistItem = ({title}: Props) => {
    return (
       <div>
          <h3>{title}</h3>
