@@ -11,6 +11,7 @@ type Props = {
    changeFilter: (filter: FilterValues) => void
    createTask: (title: string) => void
    changeTaskStatus: (taskId: string, isDone: boolean) => void
+
 }
 
 export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask, changeTaskStatus, filter}: Props) => {
@@ -65,9 +66,16 @@ export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask
             </ul>
          )}
          <div>
-            <Button title={"All"} onClick={() => changeFilter('all')}/>
-            <Button title={"Active"} onClick={() => changeFilter('active')}/>
-            <Button title={"Completed"} onClick={() => changeFilter('completed')}/>
+            <Button className={filter === "all" ? "btn-active" : ""}
+                    title={"All"}
+                    onClick={() => changeFilter('all')}
+            />
+            <Button className={filter === "active" ? "btn-active" : ""}
+                    title={"Active"}
+                    onClick={() => changeFilter('active')}/>
+            <Button className={filter === "completed" ? "btn-active" : ""}
+                    title={"Completed"}
+                    onClick={() => changeFilter('completed')}/>
 
          </div>
 
