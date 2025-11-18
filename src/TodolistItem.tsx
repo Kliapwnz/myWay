@@ -21,7 +21,10 @@ export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask
                    onChange={event => setTaskTitle(event.currentTarget.value)}
             />
             <Button title="+"
-                    onClick={() => createTask(taskTitle)
+                    onClick={() => {createTask(taskTitle)
+                    setTaskTitle("")
+                    }
+
             }
             />
          </div>
