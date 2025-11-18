@@ -36,8 +36,8 @@ export const App = () => {
    if (filter === 'completed') {
       filteredTasks = tasks.filter(task => task.isDone)
    }
-   const createTask = () => {
-      const newTask = {id: v1(), title: "New Task", isDone: false}
+   const createTask = (title: string) => {
+      const newTask = {id: v1(), title, isDone: false}
       const newTasks = [newTask, ...tasks]
       setTasks(newTasks)
    }
