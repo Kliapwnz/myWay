@@ -18,4 +18,6 @@
 
 .btn-active {
     background-color: darkorchid;
+    color: white;
+    border-radius: 3px;
 }
