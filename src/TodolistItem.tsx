@@ -13,6 +13,11 @@ type Props = {
 
 export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask}: Props) => {
    const [taskTitle, setTaskTitle] = useState("")
+
+   const createTaskHandler = () => {
+      createTask(taskTitle)
+      setTaskTitle("")
+   }
    return (
       <div>
          <h3>{title}</h3>
@@ -21,11 +26,7 @@ export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask
                    onChange={event => setTaskTitle(event.currentTarget.value)}
             />
             <Button title="+"
-                    onClick={() => {createTask(taskTitle)
-                    setTaskTitle("")
-                    }
-
-            }
+                    onClick={createTaskHandler}
             />
          </div>
          {tasks.length === 0 ? (<p>Тасок нет</p>) : (
