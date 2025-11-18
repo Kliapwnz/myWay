@@ -5,7 +5,7 @@ import {v1} from 'uuid'
 
 
 export type Task = {
-   id: number,
+   id: string,
    title: string,
    isDone: boolean
 
@@ -19,7 +19,7 @@ export const App = () => {
       {id: v1(), title: 'JS', isDone: true},
       {id: v1(), title: 'ReactJS', isDone: false},
    ])
-   const deleteTask = (taskId: number) => {
+   const deleteTask = (taskId: string) => {
       const filteredTasks = tasks.filter(task => {
          return task.id !== taskId
       })
@@ -36,11 +36,16 @@ export const App = () => {
    if (filter === 'completed') {
       filteredTasks = tasks.filter(task => task.isDone)
    }
-   const createTask = (title:string) => {
+   const createTask = (title: string) => {
       const newTask = {id: v1(), title, isDone: false}
       const newTasks = [newTask, ...tasks]
       setTasks(newTasks)
    }
+   const changeTaskStatus = (taskId: string, isDone: boolean) => {
+      const newState = tasks.map(task => task.id == taskId ? { ...task, isDone } : task)
+      setTasks(newState)
+   }
+
 
    return (
       <div className="app">
@@ -49,6 +54,7 @@ export const App = () => {
                        deleteTask={deleteTask}
                        changeFilter={changeFilter}
                        createTask={createTask}
+                       changeTaskStatus={changeTaskStatus}
          />
       </div>
    )
