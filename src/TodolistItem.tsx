@@ -6,13 +6,14 @@ import {ChangeEvent, KeyboardEvent, useState} from "react";
 type Props = {
    title: string
    tasks: Task[]
+   filter: FilterValues
    deleteTask: (taskId: string) => void
    changeFilter: (filter: FilterValues) => void
    createTask: (title: string) => void
    changeTaskStatus: (taskId: string, isDone: boolean) => void
 }
 
-export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask, changeTaskStatus}: Props) => {
+export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask, changeTaskStatus, filter}: Props) => {
    const [taskTitle, setTaskTitle] = useState("")
 
    const createTaskHandler = () => {
