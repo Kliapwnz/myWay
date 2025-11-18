@@ -1,8 +1,17 @@
 .app {
-  padding: 30px;
-  display: flex;
+    padding: 30px;
+    display: flex;
 }
 
 .app > div {
-  margin-right: 50px;
+    margin-right: 50px;
+}
+
+.task {
+    font-weight: bold;
+}
+
+.task-done {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
