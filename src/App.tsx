@@ -15,6 +15,10 @@ export type Todolist = {
    title: string
    filter: FilterValues
 }
+export type TasksState = {
+   [key: string]: Task[]
+}
+
 export type FilterValues = 'all' | 'active' | 'completed'
 
 export const App = () => {
@@ -53,7 +57,7 @@ export const App = () => {
    const deleteTodolist = (todolistId: string) => {
       setTodolists(todolists.filter(todolist => todolist.id !== todolistId))
       delete tasks[todolistId]
-      setTasks({ ...tasks })
+      setTasks({...tasks})
    }
 
    return (
