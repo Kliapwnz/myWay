@@ -2,6 +2,7 @@ import './App.css'
 import {TodolistItem} from "./TodolistItem";
 import {useState} from "react";
 import {v1} from 'uuid'
+import {CreateItemForm} from "./CreateItemForm";
 
 
 export type Task = {
@@ -62,6 +63,7 @@ export const App = () => {
 
    return (
       <div className="app">
+         <CreateItemForm/>
          {todolists.map(todolist => {
             const todolistTasks = tasks[todolist.id]
             let filteredTasks = todolistTasks
