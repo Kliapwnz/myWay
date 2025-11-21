@@ -60,10 +60,15 @@ export const App = () => {
       delete tasks[todolistId]
       setTasks({...tasks})
    }
-
+   const createTodolist = (title: string) => {
+      const todolistId = v1()
+      const newTodolist: Todolist = {id: todolistId, title, filter: "all"}
+      setTodolists([newTodolist, ...todolists])
+      setTasks({...tasks, [todolistId]:[]})
+   }
    return (
       <div className="app">
-         <CreateItemForm/>
+         <CreateItemForm onCreateItem={createTodolist}/>
          {todolists.map(todolist => {
             const todolistTasks = tasks[todolist.id]
             let filteredTasks = todolistTasks
@@ -83,6 +88,7 @@ export const App = () => {
                              changeTaskStatus={changeTaskStatus}
                              todolist={todolist}
                              deleteTodolist={deleteTodolist}
+
 
                />
             )
