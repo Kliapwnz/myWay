@@ -1,6 +1,7 @@
 import {FilterValues, Task, Todolist} from "./App";
 import {Button} from "./Button";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
+import {CreateItemForm} from "./CreateItemForm";
 
 
 type Props = {
@@ -23,6 +24,9 @@ export const TodolistItem = ({
                                 changeTaskStatus,
                                 deleteTodolist
                              }: Props) => {
+   const createTaskHandler = (title: string) => {
+      createTask(id, title)
+   }
 
    const changeFilterHandler = (filter: FilterValues) => {
       changeFilter(id, filter)
@@ -37,7 +41,7 @@ export const TodolistItem = ({
             <h3>{title}</h3>
             <Button title={"x"} onClick={deleteTodolistHandler}/>
          </div>
-
+         <CreateItemForm onCreateItem={createTaskHandler}/>
          {tasks.length === 0 ? (<p>Тасок нет</p>) : (
             <ul>
                {tasks.map(task => {
