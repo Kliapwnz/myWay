@@ -6,10 +6,10 @@ import {ChangeEvent, KeyboardEvent, useState} from "react";
 type Props = {
    todolist: Todolist
    tasks: Task[]
-   deleteTask: (taskId: string) => void
-   changeFilter: (todolistId:string, filter: FilterValues) => void
-   createTask: (title: string) => void
-   changeTaskStatus: (taskId: string, isDone: boolean) => void
+   deleteTask: (todolistId: string, taskId: string) => void
+   changeFilter: (todolistId: string, filter: FilterValues) => void
+   createTask: (todolistId: string, title: string) => void
+   changeTaskStatus: (todolistId: string, taskId: string, isDone: boolean) => void
 
 }
 
@@ -27,7 +27,7 @@ export const TodolistItem = ({
    const createTaskHandler = () => {
       const trimmedTitle = taskTitle.trim()
       if (trimmedTitle !== '') {
-         createTask(trimmedTitle)
+         createTask(id, trimmedTitle)
          setTaskTitle('')
       } else {
          setError("Title is required")
@@ -63,11 +63,11 @@ export const TodolistItem = ({
             <ul>
                {tasks.map(task => {
                   const deleteTaskHandler = () => {
-                     deleteTask(task.id)
+                     deleteTask(id, task.id)
                   }
                   const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
                      const newStatusValue = e.currentTarget.checked
-                     changeTaskStatus(task.id, newStatusValue)
+                     changeTaskStatus(id, task.id, newStatusValue)
                   }
                   return (
                      <li key={task.id}>
