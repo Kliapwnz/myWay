@@ -1,12 +1,11 @@
-import {FilterValues, Task} from "./App";
+import {FilterValues, Task, Todolist} from "./App";
 import {Button} from "./Button";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
 
 
 type Props = {
-   title: string
+   todolist: Todolist
    tasks: Task[]
-   filter: FilterValues
    deleteTask: (taskId: string) => void
    changeFilter: (filter: FilterValues) => void
    createTask: (title: string) => void
@@ -14,7 +13,14 @@ type Props = {
 
 }
 
-export const TodolistItem = ({title, tasks, deleteTask, changeFilter, createTask, changeTaskStatus, filter}: Props) => {
+export const TodolistItem = ({
+                                todolist: {title, filter},
+                                tasks,
+                                deleteTask,
+                                changeFilter,
+                                createTask,
+                                changeTaskStatus
+                             }: Props) => {
    const [taskTitle, setTaskTitle] = useState("")
    const [error, setError] = useState<string | null>(null)
 
