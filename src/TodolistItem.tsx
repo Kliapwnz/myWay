@@ -1,6 +1,6 @@
 import {FilterValues, Task, Todolist} from "./App";
 import {Button} from "./Button";
-import {ChangeEvent, KeyboardEvent, useState} from "react";
+import {ChangeEvent} from "react";
 import {CreateItemForm} from "./CreateItemForm";
 import {EditableSpan} from "./EditableSpan";
 
