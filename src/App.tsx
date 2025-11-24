@@ -94,33 +94,34 @@ export const App = () => {
             <Grid container spacing={4}>
                <CreateItemForm onCreateItem={createTodolist}/>
             </Grid>
+            <Grid container spacing={4}>
+               {todolists.map(todolist => {
+                  const todolistTasks = tasks[todolist.id]
+                  let filteredTasks = todolistTasks
+                  if (todolist.filter === 'active') {
+                     filteredTasks = todolistTasks.filter(task => !task.isDone)
+                  }
+                  if (todolist.filter === 'completed') {
+                     filteredTasks = todolistTasks.filter(task => task.isDone)
+                  }
+                  return (
+                     <TodolistItem key={todolist.id}
+                                   title={todolist.title}
+                                   tasks={filteredTasks}
+                                   deleteTask={deleteTask}
+                                   changeFilter={changeFilter}
+                                   createTask={createTask}
+                                   changeTaskStatus={changeTaskStatus}
+                                   todolist={todolist}
+                                   deleteTodolist={deleteTodolist}
+                                   changeTaskTitle={changeTaskTitle}
+                                   changeTodolistTitle={changeTodolistTitle}
 
-            {todolists.map(todolist => {
-               const todolistTasks = tasks[todolist.id]
-               let filteredTasks = todolistTasks
-               if (todolist.filter === 'active') {
-                  filteredTasks = todolistTasks.filter(task => !task.isDone)
-               }
-               if (todolist.filter === 'completed') {
-                  filteredTasks = todolistTasks.filter(task => task.isDone)
-               }
-               return (
-                  <TodolistItem key={todolist.id}
-                                title={todolist.title}
-                                tasks={filteredTasks}
-                                deleteTask={deleteTask}
-                                changeFilter={changeFilter}
-                                createTask={createTask}
-                                changeTaskStatus={changeTaskStatus}
-                                todolist={todolist}
-                                deleteTodolist={deleteTodolist}
-                                changeTaskTitle={changeTaskTitle}
-                                changeTodolistTitle={changeTodolistTitle}
 
-
-                  />
-               )
-            })}
+                     />
+                  )
+               })}
+            </Grid>
          </Container>
       </div>
    )
