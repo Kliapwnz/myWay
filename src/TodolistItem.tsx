@@ -70,7 +70,7 @@ export const TodolistItem = ({
                      changeTaskTitle(id, task.id, title)
                   }
                   return (
-                     <ListItem key={task.id} sx={getListItemSx}>
+                     <ListItem key={task.id} sx={getListItemSx(task.isDone)}>
                         <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler}/>
 
                         <EditableSpan value={task.title} onChange={changeTaskTitleHandler}/>
