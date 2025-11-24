@@ -4,7 +4,7 @@ import {CreateItemForm} from "./CreateItemForm";
 import {EditableSpan} from "./EditableSpan";
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
-import {Button, Checkbox, List, ListItem} from "@mui/material";
+import {Box, Button, Checkbox, List, ListItem} from "@mui/material";
 
 
 type Props = {
@@ -69,7 +69,7 @@ export const TodolistItem = ({
                      changeTaskTitle(id, task.id, title)
                   }
                   return (
-                     <ListItem key={task.id} className={task.isDone ? "task-done" : ""}>
+                     <ListItem key={task.id} sx={{p: 0, justifyContent: 'space-between', opacity: task.isDone ? 0.5 : 1}}>
                         <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler}/>
 
                         <EditableSpan value={task.title} onChange={changeTaskTitleHandler}/>
@@ -82,7 +82,7 @@ export const TodolistItem = ({
             </List>
          )}
 
-         <div>
+         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Button variant={filter === 'all' ? 'outlined' : 'text'}
                     color={'inherit'}
                     onClick={() => changeFilterHandler('all')}>
@@ -98,8 +98,7 @@ export const TodolistItem = ({
                     onClick={() => changeFilterHandler('completed')}>
                Completed
             </Button>
-         </div>
-
+         </Box>
       </div>
    );
 };
