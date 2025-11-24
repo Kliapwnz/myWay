@@ -9,6 +9,7 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import {Container, Grid, Paper} from "@mui/material";
+import {containerSx} from "./TodolistItem.styles";
 
 
 export type Task = {
@@ -82,11 +83,16 @@ export const App = () => {
       <div className="app">
          <AppBar position="static" sx={{ mb: '30px' }}>
             <Toolbar>
-               <Container maxWidth={'lg'}>
+               <Container maxWidth={'lg'} sx={containerSx}>
                   <IconButton color="inherit">
                      <MenuIcon/>
                   </IconButton>
-                  <Button color="inherit">Sign in</Button>
+                  <div>
+                     <Button color='inherit'>Sign in</Button>
+                     <Button color='inherit'>Sign up</Button>
+                     <Button color='inherit'>KLIApwnz</Button>
+                  </div>
+
                </Container>
             </Toolbar>
          </AppBar>
