@@ -5,11 +5,11 @@ import {v1} from 'uuid'
 import {CreateItemForm} from "./CreateItemForm";
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import {Container, Grid, Paper} from "@mui/material";
 import {containerSx} from "./TodolistItem.styles";
+import {NavButton} from "./NavButton";
 
 
 export type Task = {
@@ -88,9 +88,9 @@ export const App = () => {
                      <MenuIcon/>
                   </IconButton>
                   <div>
-                     <Button color='inherit'>Sign in</Button>
-                     <Button color='inherit'>Sign up</Button>
-                     <Button color='inherit'>KLIApwnz</Button>
+                     <NavButton>Sign in</NavButton>
+                     <NavButton>Sign up</NavButton>
+                     <NavButton>KLIApwnz</NavButton>
                   </div>
 
                </Container>
