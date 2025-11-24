@@ -4,7 +4,7 @@ import {CreateItemForm} from "./CreateItemForm";
 import {EditableSpan} from "./EditableSpan";
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
-import {Button} from "@mui/material";
+import {Button, Checkbox} from "@mui/material";
 
 
 type Props = {
@@ -69,10 +69,7 @@ export const TodolistItem = ({
                   }
                   return (
                      <li key={task.id} className={task.isDone ? "task-done" : ""}>
-                        <input type="checkbox"
-                               checked={task.isDone}
-                               onChange={changeTaskStatusHandler}
-                        />
+                        <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler}/>
 
                         <EditableSpan value={task.title} onChange={changeTaskTitleHandler}/>
                         <IconButton onClick={deleteTaskHandler}>
