@@ -5,7 +5,7 @@ import {EditableSpan} from "./EditableSpan";
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
 import {Box, Button, Checkbox, List, ListItem} from "@mui/material";
-import {containerSx} from "./TodolistItem.styles";
+import {containerSx, getListItemSx} from "./TodolistItem.styles";
 
 
 type Props = {
@@ -70,7 +70,7 @@ export const TodolistItem = ({
                      changeTaskTitle(id, task.id, title)
                   }
                   return (
-                     <ListItem key={task.id} sx={{p: 0, justifyContent: 'space-between', opacity: task.isDone ? 0.5 : 1}}>
+                     <ListItem key={task.id} sx={getListItemSx}>
                         <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler}/>
 
                         <EditableSpan value={task.title} onChange={changeTaskTitleHandler}/>
