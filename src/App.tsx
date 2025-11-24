@@ -90,7 +90,7 @@ export const App = () => {
                   <div>
                      <NavButton>Sign in</NavButton>
                      <NavButton>Sign up</NavButton>
-                     <NavButton>KLIApwnz</NavButton>
+                     <NavButton background={'dodgerblue'}>KLIApwnz</NavButton>
                   </div>
 
                </Container>
