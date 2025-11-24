@@ -7,7 +7,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import {Container, Grid, Paper} from "@mui/material";
+import {Container, Grid, Paper,} from "@mui/material";
 import {containerSx} from "./TodolistItem.styles";
 import {NavButton} from "./NavButton";
 
@@ -80,7 +80,9 @@ export const App = () => {
       setTodolists(todolists.map(todolist => todolist.id === todolistId ? {...todolist, title} : todolist))
    }
 
+
    return (
+
       <div className="app">
          <AppBar position="static" sx={{mb: '30px'}}>
             <Toolbar>
@@ -135,6 +137,7 @@ export const App = () => {
             </Grid>
          </Container>
       </div>
+
    )
 }
 
