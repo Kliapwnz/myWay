@@ -5,6 +5,7 @@ import {EditableSpan} from "./EditableSpan";
 import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
 import {Box, Button, Checkbox, List, ListItem} from "@mui/material";
+import {containerSx} from "./TodolistItem.styles";
 
 
 type Props = {
@@ -82,7 +83,7 @@ export const TodolistItem = ({
             </List>
          )}
 
-         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+         <Box sx={containerSx}>
             <Button variant={filter === 'all' ? 'outlined' : 'text'}
                     color={'inherit'}
                     onClick={() => changeFilterHandler('all')}>
