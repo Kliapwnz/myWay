@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import {Container, Grid} from "@mui/material";
+import {Container, Grid, Paper} from "@mui/material";
 
 
 export type Task = {
@@ -105,20 +105,24 @@ export const App = () => {
                      filteredTasks = todolistTasks.filter(task => task.isDone)
                   }
                   return (
-                     <TodolistItem key={todolist.id}
-                                   title={todolist.title}
-                                   tasks={filteredTasks}
-                                   deleteTask={deleteTask}
-                                   changeFilter={changeFilter}
-                                   createTask={createTask}
-                                   changeTaskStatus={changeTaskStatus}
-                                   todolist={todolist}
-                                   deleteTodolist={deleteTodolist}
-                                   changeTaskTitle={changeTaskTitle}
-                                   changeTodolistTitle={changeTodolistTitle}
+                     <Grid key={todolist.id}>
+                        <Paper>
+                           <TodolistItem key={todolist.id}
+                                         title={todolist.title}
+                                         tasks={filteredTasks}
+                                         deleteTask={deleteTask}
+                                         changeFilter={changeFilter}
+                                         createTask={createTask}
+                                         changeTaskStatus={changeTaskStatus}
+                                         todolist={todolist}
+                                         deleteTodolist={deleteTodolist}
+                                         changeTaskTitle={changeTaskTitle}
+                                         changeTodolistTitle={changeTodolistTitle}
 
 
-                     />
+                           />
+                        </Paper>
+                     </Grid>
                   )
                })}
             </Grid>
