@@ -79,6 +79,7 @@ export const App = () => {
    const changeTodolistTitle = (todolistId: string, title: string) => {
       setTodolists(todolists.map(todolist => todolist.id === todolistId ? {...todolist, title} : todolist))
    }
+
    return (
       <div className="app">
          <AppBar position="static" sx={{mb: '30px'}}>
