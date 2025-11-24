@@ -33,15 +33,15 @@ export const CreateItemForm = ({onCreateItem}: Props) => {
       <div>
          <TextField label={'Enter a title'}
                     variant={'outlined'}
-                    className={error ? 'error' : ""}
                     value={itemTitle}
                     size={'small'}
+                    error={!!error}
+                    helperText={error}
                     onChange={changeItemTitleHandler}
                     onKeyDown={createItemOnEnterHandler}
          />
 
          <Button variant="contained" onClick={createItemHandler}>+</Button>
-         {error && <div className={"error-message"}>{error}</div>}
       </div>
    );
 };
