@@ -11,7 +11,12 @@ switch (action.type) {
       return state
 }
 }
-type Actions = {
-   type: string
-   payload: any
+
+export type DeleteTodolistAction = {
+   type: 'delete_todolist'
+   payload: {
+      id: string
+   }
 }
+
+type Actions = DeleteTodolistAction
