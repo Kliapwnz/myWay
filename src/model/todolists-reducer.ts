@@ -18,5 +18,8 @@ export type DeleteTodolistAction = {
       id: string
    }
 }
+export const deleteTodolistAC = (id: string): DeleteTodolistAction => {
+   return {type: 'delete_todolist', payload: { id }} as const
+}
 
 type Actions = DeleteTodolistAction
