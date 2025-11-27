@@ -12,9 +12,10 @@ export const todolistsReducer = (state: Todolist[] = initialState, action: Actio
    }
 }
 
-export type DeleteTodolistAction = ReturnType<typeof deleteTodolistAC>
-export const deleteTodolistAC = (id: string): DeleteTodolistAction => {
+
+export type DeleteTodolistActionType = ReturnType<typeof deleteTodolistAC>
+export const deleteTodolistAC = (id: string): DeleteTodolistActionType => {
    return {type: 'delete_todolist', payload: {id}} as const
 }
 
-type Actions = DeleteTodolistAction
+type Actions = DeleteTodolistActionType
