@@ -1,18 +1,24 @@
 import {v1} from 'uuid'
-import {expect, test} from 'vitest'
+import {expect, test, beforeEach} from 'vitest'
 import type {Todolist} from '../App'
 import {addTodolistAc, deleteTodolistAC, todolistsReducer} from './todolists-reducer'
 
-test('correct todolist should be deleted', () => {
-   const todolistId1 = v1()
-   const todolistId2 = v1()
+let todolistId1: string
+let todolistId2: string
+let startState: Todolist[] = []
 
+beforeEach(() => {
+   todolistId1 = v1()
+   todolistId2 = v1()
 
-   const startState: Todolist[] = [
-      {id: todolistId1, title: 'What to learn', filter: 'all'},
-      {id: todolistId2, title: 'What to buy', filter: 'all'},
+   startState = [
+      { id: todolistId1, title: 'What to learn', filter: 'all' },
+      { id: todolistId2, title: 'What to buy', filter: 'all' },
    ]
+})
 
+
+test('correct todolist should be deleted', () => {
 
    const endState = todolistsReducer(startState, deleteTodolistAC(todolistId1))
 
@@ -22,13 +28,6 @@ test('correct todolist should be deleted', () => {
 })
 
 test('correct todolist should be created', () => {
-   const todolistId1 = v1()
-   const todolistId2 = v1()
-
-   const startState: Todolist[] = [
-      {id: todolistId1, title: 'What to learn', filter: 'all'},
-      {id: todolistId2, title: 'What to buy', filter: 'all'},
-   ]
 
    const title = 'New todolist'
    const endState = todolistsReducer(startState, addTodolistAc(title))
