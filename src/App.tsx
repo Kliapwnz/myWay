@@ -37,8 +37,6 @@ export type TasksState = {
 export type FilterValues = 'all' | 'active' | 'completed'
 
 export const App = () => {
-   const todolistId1 = v1()
-   const todolistId2 = v1()
    const [todolists, dispatchTodolists] = useReducer(todolistsReducer, [])
    const [tasks, setTasks] = useState<TasksState>({})
    const deleteTask = (todolistId: string, taskId: string) => {
