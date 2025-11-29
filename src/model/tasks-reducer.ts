@@ -14,8 +14,10 @@ export const tasksReducer = (state: TasksState = initialState, action: Actions):
          return newState
       }
       case "delete_task" : {
-         return {...state,
-            [action.payload.todolistId]: state[action.payload.todolistId].filter(task => task.id !== action.payload.taskId)}
+         return {
+            ...state,
+            [action.payload.todolistId]: state[action.payload.todolistId].filter(task => task.id !== action.payload.taskId)
+         }
       }
       default:
          return state
