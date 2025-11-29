@@ -10,7 +10,13 @@ import MenuIcon from '@mui/icons-material/Menu'
 import {Container, Grid, Paper,} from "@mui/material";
 import {containerSx} from "./TodolistItem.styles";
 import {NavButton} from "./NavButton";
-import {addTodolistAc, changeTodolistTitleAC, todolistsReducer} from "./model/todolists-reducer";
+import {
+   addTodolistAc,
+   changeTodolistFilterAC,
+   changeTodolistTitleAC,
+   deleteTodolistAC,
+   todolistsReducer
+} from "./model/todolists-reducer";
 
 
 export type Task = {
@@ -39,7 +45,7 @@ export const App = () => {
       setTasks({...tasks, [todolistId]: tasks[todolistId].filter(task => task.id !== taskId)})
    }
    const changeFilter = (todolistId: string, filter: FilterValues) => {
-      setTodolists(todolists.map(todolist => todolist.id === todolistId ? {...todolist, filter} : todolist))
+      dispatchTodolists(changeTodolistFilterAC(todolistId, filter))
    }
 
    const createTask = (todolistId: string, title: string) => {
@@ -50,14 +56,14 @@ export const App = () => {
       setTasks({...tasks, [todolistId]: tasks[todolistId].map(task => task.id == taskId ? {...task, isDone} : task)})
    }
    const deleteTodolist = (todolistId: string) => {
-      setTodolists(todolists.filter(todolist => todolist.id !== todolistId))
+      dispatchTodolists(deleteTodolistAC(todolistId))
       delete tasks[todolistId]
       setTasks({...tasks})
    }
    const createTodolist = (title: string) => {
       const action = addTodolistAc(title)
       dispatchTodolists(action)
-      setTasks({...tasks, [action.payload.id]:[]})
+      setTasks({...tasks, [action.payload.id]: []})
    }
    const changeTaskTitle = (todolistId: string, taskId: string, title: string) => {
       setTasks({...tasks, [todolistId]: tasks[todolistId].map(task => task.id === taskId ? {...task, title} : task)})
