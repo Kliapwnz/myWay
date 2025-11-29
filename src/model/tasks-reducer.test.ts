@@ -1,6 +1,6 @@
-import { beforeEach, expect, test } from 'vitest'
+import {beforeEach, expect, test} from 'vitest'
 import type {TasksState} from '../App'
-import {createTaskAC, deleteTaskAC, tasksReducer} from "./tasks-reducer";
+import {changeTaskStatusAC, createTaskAC, deleteTaskAC, tasksReducer} from "./tasks-reducer";
 import {addTodolistAc, deleteTodolistAC} from "./todolists-reducer";
 
 let startState: TasksState = {}
@@ -46,18 +46,18 @@ test('property with todolistId should be deleted', () => {
 test('correct task should be deleted', () => {
    const endState = tasksReducer(
       startState,
-      deleteTaskAC( 'todolistId2',  '2' )
+      deleteTaskAC('todolistId2', '2')
    )
 
    expect(endState).toEqual({
       todolistId1: [
-         { id: '1', title: 'CSS', isDone: false },
-         { id: '2', title: 'JS', isDone: true },
-         { id: '3', title: 'React', isDone: false },
+         {id: '1', title: 'CSS', isDone: false},
+         {id: '2', title: 'JS', isDone: true},
+         {id: '3', title: 'React', isDone: false},
       ],
       todolistId2: [
-         { id: '1', title: 'bread', isDone: false },
-         { id: '3', title: 'tea', isDone: false },
+         {id: '1', title: 'bread', isDone: false},
+         {id: '3', title: 'tea', isDone: false},
       ],
    })
 })
@@ -76,4 +76,14 @@ test('correct task should be created at correct array', () => {
    expect(endState.todolistId2[0].id).toBeDefined()
    expect(endState.todolistId2[0].title).toBe('juice')
    expect(endState.todolistId2[0].isDone).toBe(false)
+})
+
+test('correct task should change its status', () => {
+   const endState = tasksReducer(
+      startState,
+      changeTaskStatusAC('todolistId2', '2', false)
+   )
+
+   expect(endState.todolistId2[1].isDone).toBe(false)
+   expect(endState.todolistId2[2].isDone).toBe(false)
 })
