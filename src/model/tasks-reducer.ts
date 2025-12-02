@@ -70,8 +70,10 @@ export const changeTaskStatusAC = (todolistId: string, taskId: string, isDone: b
    return {type: "change_task_status", payload: {todolistId, taskId, isDone}} as const
 }
 export type ChangeTaskTitleType = ReturnType<typeof changeTaskTitleAC>
-export const changeTaskTitleAC = (payload:{todolistId: string, taskId: string, title: string}): ChangeTaskTitleType => {
-   return {type: "change_task_title", payload} as const
+export const changeTaskTitleAC = (todolistId: string, taskId: string, title: string): ChangeTaskTitleType => {
+   return {type: "change_task_title", payload:{
+      todolistId, taskId, title
+      }} as const
 }
 
 type Actions =

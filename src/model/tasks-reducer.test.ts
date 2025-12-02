@@ -90,7 +90,7 @@ test('correct task should change its status', () => {
 test('correct task should change its title', () => {
    const endState = tasksReducer(
       startState,
-      changeTaskTitleAC({todolistId: "todolistId2", taskId: "2", title:"water"})
+      changeTaskTitleAC("todolistId2",  "2", "water")
    )
 
    expect(endState.todolistId2[1].title).toBe('water')
