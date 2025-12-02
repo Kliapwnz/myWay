@@ -17,6 +17,7 @@ import {
    deleteTodolistAC,
    todolistsReducer
 } from "./model/todolists-reducer";
+import {deleteTaskAC, tasksReducer} from "./model/tasks-reducer";
 
 
 export type Task = {
@@ -38,9 +39,9 @@ export type FilterValues = 'all' | 'active' | 'completed'
 
 export const App = () => {
    const [todolists, dispatchTodolists] = useReducer(todolistsReducer, [])
-   const [tasks, setTasks] = useState<TasksState>({})
+   const [tasks, dispatchToTasks] = useReducer(tasksReducer,{})
    const deleteTask = (todolistId: string, taskId: string) => {
-      setTasks({...tasks, [todolistId]: tasks[todolistId].filter(task => task.id !== taskId)})
+      dispatchToTasks(deleteTaskAC(todolistId, taskId))
    }
    const changeFilter = (todolistId: string, filter: FilterValues) => {
       dispatchTodolists(changeTodolistFilterAC(todolistId, filter))
