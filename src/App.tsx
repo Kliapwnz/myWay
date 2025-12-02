@@ -1,7 +1,6 @@
 import './App.css'
 import {TodolistItem} from "./TodolistItem";
-import {useReducer, useState} from "react";
-import {v1} from 'uuid'
+import {useReducer} from "react";
 import {CreateItemForm} from "./CreateItemForm";
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
