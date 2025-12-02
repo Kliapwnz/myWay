@@ -43,7 +43,8 @@ export const App = () => {
       dispatchToTasks(deleteTaskAC(todolistId, taskId))
    }
    const changeFilter = (todolistId: string, filter: FilterValues) => {
-      dispatchTodolists(changeTodolistFilterAC(todolistId, filter))
+      const action = changeTodolistFilterAC(todolistId, filter)
+      dispatchTodolists(action)
    }
 
    const createTask = (todolistId: string, title: string) => {
